@@ -17,7 +17,7 @@ If you want to run the bot from command line, you can run it with:
 mvn spring-boot:run -Dconfig.bot.token=YOUR_TOKEN -Dconfig.bot.name=YOUR_BOT_NAME 
 ```
 
-Alternatively, you can provide an application.yml file and the variables there.
+Alternatively, you can provide an application.yml file and put the variables there.
 
 
 # Requirements
