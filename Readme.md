@@ -1,8 +1,21 @@
 # Spring Boot Telegram Starter
 
+[![Jitpack](https://jitpack.io/v/xabgesagtx/telegram-spring-boot-starter.svg)](https://jitpack.io/#xabgesagtx/telegram-spring-boot-starter)
+
 This is a starter pom for a spring boot application.
 
-You have to add the following dependency to the pom of your spring boot app
+First you need to add jitpack as a repository to your pom of your spring boot app
+
+```xml
+<repositories>
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+</repositories>
+```
+
+Then you have to add the following dependency to the pom
 
 ```xml
 <dependency>
@@ -12,7 +25,7 @@ You have to add the following dependency to the pom of your spring boot app
 </dependency>
 ```
 
-The only thing you need to do is create a bean for a bot. E.g.:
+The only thing you need to do now is to create a bean for a bot. E.g.:
 
 ```java
 @Component
@@ -21,11 +34,5 @@ public class Bot extends TelegramLongPollingBot {
 } 
 ```
 
-The bot will be registered for you automatically on startup.
-
-
-# Requirements
-
-* Java 8
-* Maven
+The bot will then be registered for you automatically on startup.
  
