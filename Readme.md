@@ -6,9 +6,9 @@ You have to add the following dependency to the pom of your spring boot app
 
 ```xml
 <dependency>
-	<group></group>
-	<artifactId></artifactId>
-	<version>0.1</version>
+	<groupId>com.github.xabgesagtx</groupId>
+	<artifactId>telegram-spring-boot-starter</artifactId>
+	<version>0.1-SNAPSHOT</version>
 </dependency>
 ```
 
