@@ -1,23 +1,27 @@
 # Spring Boot Telegram Starter
 
-This repository provides an example for a simple bot with the [Java Telegram Bot API](https://github.com/rubenlagus/TelegramBots) using Spring Boot-
+This is a starter pom for a spring boot application.
 
-It can be used to create your own bot without any further knowledge of Spring or Spring Boot.
+You have to add the following dependency to the pom of your spring boot app
 
-To run the bot in eclipse just set these two environment variables which provide the token of your bot and its name:
-
-```
-config.bot.token
-config.bot.name
-```
-
-If you want to run the bot from command line, you can run it with:
-
-```bash
-mvn spring-boot:run -Dconfig.bot.token=YOUR_TOKEN -Dconfig.bot.name=YOUR_BOT_NAME 
+```xml
+<dependency>
+	<group></group>
+	<artifactId></artifactId>
+	<version>0.1</version>
+</dependency>
 ```
 
-Alternatively, you can provide an application.yml file and put the variables there.
+The only thing you need to do is create a bean for a bot. E.g.:
+
+```java
+@Component
+public class Bot extends TelegramLongPollingBot {
+...
+} 
+```
+
+The bot will be registered for you automatically on startup.
 
 
 # Requirements
