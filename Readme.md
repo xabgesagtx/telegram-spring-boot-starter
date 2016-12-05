@@ -21,7 +21,7 @@ Then you have to add the following dependency to the pom
 <dependency>
 	<groupId>com.github.xabgesagtx</groupId>
 	<artifactId>telegram-spring-boot-starter</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.1</version>
 </dependency>
 ```
 
