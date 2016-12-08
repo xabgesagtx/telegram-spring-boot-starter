@@ -2,9 +2,9 @@
 
 [![Jitpack](https://jitpack.io/v/xabgesagtx/telegram-spring-boot-starter.svg)](https://jitpack.io/#xabgesagtx/telegram-spring-boot-starter)
 
-This is a starter pom for a spring boot application.
+This is a starter pom for a spring boot application with the [TelegramBots Java API](https://github.com/rubenlagus/TelegramBots).
 
-First you need to add jitpack as a repository to your pom of your spring boot app
+First, you need to add jitpack as a repository to your pom of your spring boot app
 
 ```xml
 <repositories>
