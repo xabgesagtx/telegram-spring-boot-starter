@@ -1,4 +1,4 @@
-# Spring Boot Telegram Starter
+# Telegram Spring Boot Starter
 
 [![Jitpack](https://jitpack.io/v/xabgesagtx/telegram-spring-boot-starter.svg)](https://jitpack.io/#xabgesagtx/telegram-spring-boot-starter)
 
@@ -36,3 +36,7 @@ public class Bot extends TelegramLongPollingBot {
 
 The bot will then be registered for you automatically on startup.
  
+
+# Example
+
+An [implementation example](https://github.com/xabgesagtx/telegram-spring-boot-starter-example) is available too.
