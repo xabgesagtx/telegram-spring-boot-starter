@@ -62,7 +62,7 @@ public class TelegramBotAutoConfiguration {
 	public void stop() {
 		sessions.stream().forEach(session -> {
 			if (session != null) {
-				session.close();
+				session.stop();
 			}	
 		});
 	}
