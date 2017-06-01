@@ -50,7 +50,7 @@
 		<dependency>
 		    <groupId>org.telegram</groupId>
 		    <artifactId>telegrambots</artifactId>
-		    <version>3.0</version>
+		    <version>3.0.1</version>
 		</dependency>
 		
 		<dependency>
