@@ -4,3 +4,7 @@ target/
 .settings
 .classpath
 .factorypath
+.idea
+*.iws
+*.iml
+*.ipr
