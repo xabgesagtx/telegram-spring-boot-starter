@@ -4,7 +4,7 @@
 
 	<groupId>com.github.xabgesagtx</groupId>
 	<artifactId>telegram-spring-boot-starter</artifactId>
-	<version>0.8-SNAPSHOT</version>
+	<version>0.8</version>
 	<packaging>jar</packaging>
 
 	<name>telegram-spring-boot-starter</name>
@@ -50,7 +50,7 @@
 		<dependency>
 		    <groupId>org.telegram</groupId>
 		    <artifactId>telegrambots</artifactId>
-		    <version>3.0.2</version>
+		    <version>3.1.0</version>
 		</dependency>
 		
 		<dependency>
