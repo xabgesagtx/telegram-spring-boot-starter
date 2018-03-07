@@ -40,7 +40,7 @@ public class TelegramBotAutoConfiguration {
 	public void start() {
 		logger.info("Starting auto config for telegram bots");
 		TelegramBotsApi api = new TelegramBotsApi();
-		pollingBots.stream().forEach(bot -> {
+		pollingBots.forEach(bot -> {
 			try {
 				logger.info("Registering polling bot: {}", bot.getBotUsername());
 				sessions.add(api.registerBot(bot));
@@ -48,7 +48,7 @@ public class TelegramBotAutoConfiguration {
 				logger.error("Failed to register bot {} due to error {}", bot.getBotUsername(), e.getMessage());
 			}			
 		});
-		webHookBots.stream().forEach(bot -> {
+		webHookBots.forEach(bot -> {
 			try {
 				logger.info("Registering web hook bot: {}", bot.getBotUsername());
 				api.registerBot(bot);
