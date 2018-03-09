@@ -36,7 +36,7 @@ public class Bot extends TelegramLongPollingBot {
 
 The bot will then be registered for you automatically on startup.
 
-## Configuration
+## Configuration (version: 0.15+)
  
 The following properties can be configured:
 
