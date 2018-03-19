@@ -4,7 +4,7 @@
 
 	<groupId>com.github.xabgesagtx</groupId>
 	<artifactId>telegram-spring-boot-starter</artifactId>
-	<version>0.16-SNAPSHOT</version>
+	<version>0.16</version>
 	<packaging>jar</packaging>
 
 	<name>telegram-spring-boot-starter</name>
@@ -34,7 +34,7 @@
 		<url>https://github.com/xabgesagtx/telegram-spring-boot-starter</url>
 		<connection>scm:git:git://github.com/xabgesagtx/telegram-spring-boot-starter.git</connection>
 		<developerConnection>scm:git:git@github.com:xabgesagtx/telegram-spring-boot-starter.git</developerConnection>
-	  <tag>HEAD</tag>
+	  <tag>0.16</tag>
   </scm>
 
 	<properties>
