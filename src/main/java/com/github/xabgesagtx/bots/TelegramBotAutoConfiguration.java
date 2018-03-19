@@ -4,9 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 import org.telegram.telegrambots.ApiContextInitializer;
@@ -28,7 +29,7 @@ import java.util.List;
 @Configuration
 @ConfigurationProperties("telegram")
 @Slf4j
-@ConditionalOnBean({TelegramLongPollingBot.class, TelegramWebhookBot.class})
+@ConditionalOnClass(TelegramBotsApi.class)
 public class TelegramBotAutoConfiguration {
 
 	private List<BotSession> sessions = new ArrayList<>();
@@ -91,7 +92,9 @@ public class TelegramBotAutoConfiguration {
 	 * @return api object
 	 * @throws TelegramApiRequestException
 	 */
-	private TelegramBotsApi getApi() throws TelegramApiRequestException {
+	@Bean
+	@ConditionalOnMissingBean
+	public TelegramBotsApi getApi() throws TelegramApiRequestException {
 		TelegramBotsApi result;
 		if (!StringUtils.isEmpty(externalUrl) && !StringUtils.isEmpty(internalUrl)) {
 			if (!StringUtils.isEmpty(keyStore) && !StringUtils.isEmpty(keyStorePassword)) {
@@ -115,7 +118,7 @@ public class TelegramBotAutoConfiguration {
 
 	@PreDestroy
 	public void stop() {
-		sessions.stream().forEach(session -> {
+		sessions.forEach(session -> {
 			if (session != null) {
 				session.stop();
 			}	
