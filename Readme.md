@@ -1,21 +1,11 @@
 # Telegram Spring Boot Starter
 
-[![Build Status](https://travis-ci.org/xabgesagtx/telegram-spring-boot-starter.svg?branch=master)](https://travis-ci.org/xabgesagtx/telegram-spring-boot-starter) [![Jitpack](https://jitpack.io/v/xabgesagtx/telegram-spring-boot-starter.svg)](https://jitpack.io/#xabgesagtx/telegram-spring-boot-starter)
+[![Build Status](https://travis-ci.org/xabgesagtx/telegram-spring-boot-starter.svg?branch=master)](https://travis-ci.org/xabgesagtx/telegram-spring-boot-starter) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.xabgesagtx/telegram-spring-boot-starter/badge.svg)](https://mvnrepository.com/artifact/com.github.xabgesagtx/telegram-spring-boot-starter) [![Jitpack](https://jitpack.io/v/xabgesagtx/telegram-spring-boot-starter.svg)](https://jitpack.io/#xabgesagtx/telegram-spring-boot-starter)
 
 This is a starter pom for a spring boot application with the [TelegramBots Java API](https://github.com/rubenlagus/TelegramBots).
 
-First, you need to add jitpack as a repository to your pom of your spring boot app
 
-```xml
-<repositories>
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
-</repositories>
-```
-
-Then you have to add the following dependency to the pom
+The starter is available at maven central. Just add the following dependency to your pom:
 
 ```xml
 <dependency>
@@ -25,7 +15,12 @@ Then you have to add the following dependency to the pom
 </dependency>
 ```
 
-The only thing you need to do now is to create a bean for a bot. E.g.:
+For gradle users just add this to your dependencies:
+```groovy
+compile('com.github.xabgesagtx:telegram-spring-boot-starter:0.16')
+```
+
+The only thing you need to do after adding the depedency is to create a bean for a bot. E.g.:
 
 ```java
 @Component
