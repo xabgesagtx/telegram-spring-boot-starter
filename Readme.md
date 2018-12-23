@@ -11,16 +11,16 @@ The starter is available at maven central. Just add the following dependency to 
 <dependency>
 	<groupId>com.github.xabgesagtx</groupId>
 	<artifactId>telegram-spring-boot-starter</artifactId>
-	<version>0.18</version>
+	<version>0.19</version>
 </dependency>
 ```
 
 For gradle users just add this to your dependencies:
 ```groovy
-compile('com.github.xabgesagtx:telegram-spring-boot-starter:0.18')
+compile('com.github.xabgesagtx:telegram-spring-boot-starter:0.19')
 ```
 
-The only thing you need to do after adding the depedency is to create a bean for a bot. E.g.:
+The only thing you need to do after adding the dependency is to create a bean for a bot. E.g.:
 
 ```java
 @Component
