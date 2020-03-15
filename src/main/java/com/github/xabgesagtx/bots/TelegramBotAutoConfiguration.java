@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.telegram.telegrambots.ApiContextInitializer;
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 import org.telegram.telegrambots.meta.generics.BotSession;
+import org.telegram.telegrambots.meta.generics.LongPollingBot;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -32,7 +32,7 @@ public class TelegramBotAutoConfiguration {
 
 	private List<BotSession> sessions = new ArrayList<>();
 	
-	private final List<TelegramLongPollingBot> pollingBots;
+	private final List<LongPollingBot> pollingBots;
 	private final List<TelegramWebhookBot> webHookBots;
 	private final TelegramProperties properties;
 
