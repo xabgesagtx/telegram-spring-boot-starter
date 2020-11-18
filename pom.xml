@@ -52,6 +52,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
 		<glassfish.version>2.29.1</glassfish.version>
+		<telegrambots.version>5.0.1</telegrambots.version>
 	</properties>
 
 	<dependencies>
@@ -63,7 +64,7 @@
 		<dependency>
 		    <groupId>org.telegram</groupId>
 		    <artifactId>telegrambots</artifactId>
-		    <version>4.6</version>
+		    <version>${telegrambots.version}</version>
 		</dependency>
 
 		<dependency>
