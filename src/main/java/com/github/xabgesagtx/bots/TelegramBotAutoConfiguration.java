@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -36,10 +35,6 @@ public class TelegramBotAutoConfiguration {
 	private final List<TelegramWebhookBot> webHookBots;
 	private final TelegramProperties properties;
 
-	static {
-		ApiContextInitializer.init();
-	}
-	
 	@PostConstruct
 	public void start() throws TelegramApiRequestException {
 		log.info("Starting auto config for telegram bots");
@@ -70,7 +65,7 @@ public class TelegramBotAutoConfiguration {
 	 */
 	@Bean
 	@ConditionalOnMissingBean
-	public TelegramBotsApi telegramBotsApi() throws TelegramApiRequestException {
+	public TelegramBotsApi telegramBotsApi() throws TelegramApiException {
 		TelegramBotsApi result;
 		if (properties.hasKeyStoreWithPath()) {
 			log.info("Initializing API with webhook support and configured keystore and path to certificate");
@@ -83,7 +78,7 @@ public class TelegramBotAutoConfiguration {
 			result = new TelegramBotsApi(properties.getExternalUrl(), properties.getInternalUrl());
 		} else {
 			log.info("Initializing API without webhook support");
-			result = new TelegramBotsApi();
+			result = new TelegramBotsApi(null);
 		}
 		return result;
 	}
