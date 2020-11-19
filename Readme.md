@@ -1,6 +1,6 @@
 # Telegram Spring Boot Starter
 
-![build badge](https://github.com/xabgesagtx/telegram-spring-boot-starter/workflows/build/badge.svg) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.xabgesagtx/telegram-spring-boot-starter/badge.svg)](https://mvnrepository.com/artifact/com.github.xabgesagtx/telegram-spring-boot-starter) [![Jitpack](https://jitpack.io/v/xabgesagtx/telegram-spring-boot-starter.svg)](https://jitpack.io/#xabgesagtx/telegram-spring-boot-starter)
+[![build badge](https://github.com/xabgesagtx/telegram-spring-boot-starter/workflows/build/badge.svg)](https://github.com/xabgesagtx/telegram-spring-boot-starter/actions?query=workflow%3Abuild) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.xabgesagtx/telegram-spring-boot-starter/badge.svg)](https://mvnrepository.com/artifact/com.github.xabgesagtx/telegram-spring-boot-starter) [![Jitpack](https://jitpack.io/v/xabgesagtx/telegram-spring-boot-starter.svg)](https://jitpack.io/#xabgesagtx/telegram-spring-boot-starter)
 
 This is a starter pom for a spring boot application with the [TelegramBots Java API](https://github.com/rubenlagus/TelegramBots).
 
