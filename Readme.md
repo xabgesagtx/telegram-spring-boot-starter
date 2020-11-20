@@ -29,6 +29,15 @@ public class Bot extends TelegramLongPollingBot {
 } 
 ```
 
+or for a webhook bot:
+
+```java
+@Component
+public class Bot extends TelegramWebhookBotService {
+...                                                  } 
+}
+```
+
 The bot will then be registered for you automatically on startup.
 
 ## Configuration
