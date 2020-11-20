@@ -97,7 +97,9 @@ public class TelegramBotAutoConfiguration {
 
 	private DefaultWebhook getWebhookConfig(TelegramProperties properties) throws TelegramApiException {
 		DefaultWebhook webhook = new DefaultWebhook();
-		webhook.setKeyStore(properties.getKeyStore(), properties.getKeyStorePassword());
+		if (properties.hasKeyStoreWithPath()) {
+			webhook.setKeyStore(properties.getKeyStore(), properties.getKeyStorePassword());
+		}
 		webhook.setInternalUrl(properties.getInternalUrl());
 		return webhook;
 	}
