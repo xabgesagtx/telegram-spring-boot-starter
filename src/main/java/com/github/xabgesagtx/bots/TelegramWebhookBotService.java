@@ -3,8 +3,9 @@ package com.github.xabgesagtx.bots;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
 
-import javax.validation.constraints.NotNull;
-
+/**
+ * This class is a blueprint to generate a Webhook Bot.
+ */
 public abstract class TelegramWebhookBotService extends TelegramWebhookBot {
 	/**
 	 * Override this to configure the webhook for a single service here.
@@ -13,7 +14,7 @@ public abstract class TelegramWebhookBotService extends TelegramWebhookBot {
 	 * @param webhook never null
 	 * @return the modified webhook
 	 */
-	public SetWebhook.SetWebhookBuilder getInitializingWebhookRequest(@NotNull SetWebhook.SetWebhookBuilder webhook) {
+	public SetWebhook.SetWebhookBuilder customizeWebHook(SetWebhook.SetWebhookBuilder webhook) {
 		return webhook;
 	}
 

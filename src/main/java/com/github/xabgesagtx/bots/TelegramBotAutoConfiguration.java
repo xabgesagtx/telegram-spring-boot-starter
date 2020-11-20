@@ -55,7 +55,7 @@ public class TelegramBotAutoConfiguration {
 		webHookBots.forEach(bot -> {
 			try {
 				log.info("Registering web hook bot: {}", bot.getBotUsername());
-				SetWebhook webhook = bot.getInitializingWebhookRequest(webhookBuilder).build();
+				SetWebhook webhook = bot.customizeWebHook(webhookBuilder).build();
 				api.registerBot(bot, webhook);
 			} catch (TelegramApiException e) {
 				log.error("Failed to register bot {} due to error", bot.getBotUsername(), e);
