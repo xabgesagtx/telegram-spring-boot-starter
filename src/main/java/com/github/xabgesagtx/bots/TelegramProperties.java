@@ -9,22 +9,22 @@ import org.springframework.util.StringUtils;
 @ConfigurationProperties("telegram")
 @Data
 class TelegramProperties {
-	private String externalUrl;
-	private String internalUrl;
-	private String keyStore;
-	private String keyStorePassword;
-	private String pathToCertificate;
+    private String externalUrl;
+    private String internalUrl;
+    private String keyStore;
+    private String keyStorePassword;
+    private String pathToCertificate;
 
-	boolean hasKeyStoreWithPath() {
-		return hasUrls() && hasKeyStore() && !StringUtils.isEmpty(pathToCertificate);
-	}
+    boolean hasKeyStoreWithPath() {
+        return hasUrls() && hasKeyStore() && !StringUtils.isEmpty(pathToCertificate);
+    }
 
-	boolean hasKeyStore() {
-		return !StringUtils.isEmpty(keyStore) && !StringUtils.isEmpty(keyStorePassword);
-	}
+    boolean hasKeyStore() {
+        return !StringUtils.isEmpty(keyStore) && !StringUtils.isEmpty(keyStorePassword);
+    }
 
-	boolean hasUrls() {
-		return !StringUtils.isEmpty(externalUrl) && !StringUtils.isEmpty(internalUrl);
-	}
+    boolean hasUrls() {
+        return !StringUtils.isEmpty(externalUrl) && !StringUtils.isEmpty(internalUrl);
+    }
 
 }
