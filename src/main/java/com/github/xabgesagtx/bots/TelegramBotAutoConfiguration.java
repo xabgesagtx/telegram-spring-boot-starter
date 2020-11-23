@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
+import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook.SetWebhookBuilder;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
@@ -37,12 +38,10 @@ public class TelegramBotAutoConfiguration {
 	private final List<LongPollingBot> pollingBots;
 	private final List<TelegramWebhookBotService> webHookBots;
 	private final TelegramProperties properties;
-	private SetWebhook.SetWebhookBuilder webhookBuilder;
 
 	@PostConstruct
 	public void start() throws TelegramApiException {
 		log.info("Starting auto config for telegram bots");
-		webhookBuilder = SetWebhook.builder();
 		TelegramBotsApi api = telegramBotsApi();
 		pollingBots.forEach(bot -> {
 			try {
@@ -55,13 +54,26 @@ public class TelegramBotAutoConfiguration {
 		webHookBots.forEach(bot -> {
 			try {
 				log.info("Registering web hook bot: {}", bot.getBotUsername());
-				SetWebhook webhook = bot.customizeWebHook(webhookBuilder).build();
-				api.registerBot(bot, webhook);
+				SetWebhook.SetWebhookBuilder webhookBuilder = createWebhookBuilder();
+				SetWebhook botCustomizedWebhook = bot.customizeWebHook(webhookBuilder).build();
+				api.registerBot(bot, botCustomizedWebhook);
 			} catch (TelegramApiException e) {
 				log.error("Failed to register bot {} due to error", bot.getBotUsername(), e);
 			}
 		});
 	}
+
+	private SetWebhookBuilder createWebhookBuilder() {
+		SetWebhook.SetWebhookBuilder builder = SetWebhook.builder();
+		if (properties.hasKeyStoreWithPath()) {
+			InputFile certificatePath = new InputFile(properties.getPathToCertificate());
+			builder.certificate(certificatePath);
+			builder.url(properties.getExternalUrl());
+		} else if (properties.hasKeyStore() || properties.hasUrls()) {
+			builder.url(properties.getExternalUrl());
+		}
+		return builder;
+    }
 
 	/**
 	 * Get API object depending on configured properties.
@@ -76,18 +88,14 @@ public class TelegramBotAutoConfiguration {
 		TelegramBotsApi result;
 		if (properties.hasKeyStoreWithPath()) {
 			log.info("Initializing API with webhook support and configured keystore and path to certificate");
-			webhookBuilder.certificate(new InputFile(properties.getPathToCertificate()));
-			webhookBuilder.url(properties.getExternalUrl());
 			DefaultWebhook webhook = getWebhookConfig(properties);
 			result = new TelegramBotsApi(DefaultBotSession.class, webhook);
 		} else if (properties.hasKeyStore()) {
 			log.info("Initializing API with webhook support and configured keystore");
-			webhookBuilder.url(properties.getExternalUrl());
 			DefaultWebhook webhook = getWebhookConfig(properties);
 			result = new TelegramBotsApi(DefaultBotSession.class, webhook);
 		} else if (properties.hasUrls()) {
 			log.info("Initializing API with webhook support");
-			webhookBuilder.url(properties.getExternalUrl());
 			DefaultWebhook webhook = getWebhookConfig(properties);
 			result = new TelegramBotsApi(DefaultBotSession.class, webhook);
 		} else {
