@@ -74,19 +74,21 @@ public class TelegramBotAutoConfiguration {
 	@ConditionalOnMissingBean
 	public TelegramBotsApi telegramBotsApi() throws TelegramApiException {
 		TelegramBotsApi result;
-		DefaultWebhook webhook = getWebhookConfig(properties);
 		if (properties.hasKeyStoreWithPath()) {
 			log.info("Initializing API with webhook support and configured keystore and path to certificate");
 			webhookBuilder.certificate(new InputFile(properties.getPathToCertificate()));
 			webhookBuilder.url(properties.getExternalUrl());
+			DefaultWebhook webhook = getWebhookConfig(properties);
 			result = new TelegramBotsApi(DefaultBotSession.class, webhook);
 		} else if (properties.hasKeyStore()) {
 			log.info("Initializing API with webhook support and configured keystore");
 			webhookBuilder.url(properties.getExternalUrl());
+			DefaultWebhook webhook = getWebhookConfig(properties);
 			result = new TelegramBotsApi(DefaultBotSession.class, webhook);
 		} else if (properties.hasUrls()) {
 			log.info("Initializing API with webhook support");
 			webhookBuilder.url(properties.getExternalUrl());
+			DefaultWebhook webhook = getWebhookConfig(properties);
 			result = new TelegramBotsApi(DefaultBotSession.class, webhook);
 		} else {
 			log.info("Initializing API without webhook support");
