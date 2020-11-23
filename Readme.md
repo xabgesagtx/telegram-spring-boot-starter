@@ -34,7 +34,7 @@ or for a webhook bot:
 ```java
 @Component
 public class Bot extends TelegramWebhookBotService {
-...                                                  } 
+... 
 }
 ```
 
