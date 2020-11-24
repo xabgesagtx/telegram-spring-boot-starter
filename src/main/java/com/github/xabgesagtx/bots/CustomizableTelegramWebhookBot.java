@@ -7,13 +7,13 @@ import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
 /**
  * This class is a blueprint to generate a Webhook Bot.
  */
-public abstract class TelegramWebhookBotService extends TelegramWebhookBot {
+public abstract class CustomizableTelegramWebhookBot extends TelegramWebhookBot {
 
-    public TelegramWebhookBotService() {
+    public CustomizableTelegramWebhookBot() {
         super();
     }
 
-    public TelegramWebhookBotService(DefaultBotOptions options) {
+    public CustomizableTelegramWebhookBot(DefaultBotOptions options) {
         super(options);
     }
 
@@ -24,8 +24,6 @@ public abstract class TelegramWebhookBotService extends TelegramWebhookBot {
      * @param webhook never null
      * @return the modified webhook
      */
-    public SetWebhook.SetWebhookBuilder customizeWebHook(SetWebhook.SetWebhookBuilder webhook) {
-        return webhook;
-    }
+    public abstract SetWebhook.SetWebhookBuilder customizeWebHook(SetWebhook.SetWebhookBuilder webhook);
 
 }

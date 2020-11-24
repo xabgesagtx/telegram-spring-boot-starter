@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
 import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook.SetWebhookBuilder;
@@ -34,7 +35,7 @@ public class TelegramBotAutoConfiguration {
 
     private final List<BotSession> sessions = new ArrayList<>();
     private final List<LongPollingBot> pollingBots;
-    private final List<TelegramWebhookBotService> webHookBots;
+    private final List<TelegramWebhookBot> webHookBots;
     private final TelegramProperties properties;
 
     @PostConstruct
@@ -53,8 +54,10 @@ public class TelegramBotAutoConfiguration {
             try {
                 log.info("Registering web hook bot: {}", bot.getBotUsername());
                 SetWebhook.SetWebhookBuilder webhookBuilder = createWebhookBuilder();
-                SetWebhook botCustomizedWebhook = bot.customizeWebHook(webhookBuilder).build();
-                api.registerBot(bot, botCustomizedWebhook);
+                if (bot instanceof CustomizableTelegramWebhookBot) {
+                    ((CustomizableTelegramWebhookBot) bot).customizeWebHook(webhookBuilder);
+                }
+                api.registerBot(bot, webhookBuilder.build());
             } catch (TelegramApiException e) {
                 log.error("Failed to register bot {} due to error", bot.getBotUsername(), e);
             }
