@@ -20,4 +20,4 @@ jobs:
       - name: Check code style
         run: mvn -B checkstyle:checkstyle
       - name: Build with Maven
-        run: mvn -B clean package
+        run: mvn -B clean verify
