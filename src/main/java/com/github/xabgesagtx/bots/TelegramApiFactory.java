@@ -9,6 +9,9 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import org.telegram.telegrambots.updatesreceivers.DefaultWebhook;
 
+/**
+ * Factory to create a telegram API.
+ */
 @Component
 @ConditionalOnMissingBean(TelegramApiFactory.class)
 @RequiredArgsConstructor
@@ -17,6 +20,12 @@ class TelegramApiFactory {
 
     private final TelegramProperties properties;
 
+    /**
+     * Creates API without or with webhook support depending on properties set.
+     * At least the internal URL needs to be set to have webhook support enabled.
+     * @return api
+     * @throws TelegramApiException when the API is misconfigured
+     */
     TelegramBotsApi create() throws TelegramApiException {
         TelegramBotsApi result;
         if (properties.hasInternalUrl()) {

@@ -7,6 +7,9 @@ import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
 import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook.SetWebhookBuilder;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 
+/**
+ * Factory to create webhook builders.
+ */
 @Component
 @ConditionalOnMissingBean(SetWebhookBuilderFactory.class)
 @RequiredArgsConstructor
@@ -14,6 +17,10 @@ class SetWebhookBuilderFactory {
 
     private final TelegramProperties properties;
 
+    /**
+     * Create webhook builder using properties to set fields to default values (external URL, certificate).
+     * @return builder
+     */
     SetWebhookBuilder create() {
         SetWebhook.SetWebhookBuilder builder = SetWebhook.builder();
         if (properties.hasExternalUrl()) {
