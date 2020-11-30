@@ -33,10 +33,19 @@ or for a webhook bot:
 
 ```java
 @Component
-public class Bot extends TelegramWebhookBotService {
+public class Bot extends TelegramWebhookBot {
 ... 
 }
 ```
+
+if you want to overwrite a webhook for a specific bot:
+```java
+@Component
+public class Bot extends CustomizableTelegramWebhookBot {
+... 
+}
+```
+
 
 The bot will then be registered for you automatically on startup.
 

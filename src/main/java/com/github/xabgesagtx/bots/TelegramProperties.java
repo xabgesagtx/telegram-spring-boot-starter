@@ -15,16 +15,19 @@ class TelegramProperties {
     private String keyStorePassword;
     private String pathToCertificate;
 
-    boolean hasKeyStoreWithPath() {
-        return hasUrls() && hasKeyStore() && !StringUtils.isEmpty(pathToCertificate);
-    }
-
     boolean hasKeyStore() {
         return !StringUtils.isEmpty(keyStore) && !StringUtils.isEmpty(keyStorePassword);
     }
 
-    boolean hasUrls() {
-        return !StringUtils.isEmpty(externalUrl) && !StringUtils.isEmpty(internalUrl);
+    boolean hasInternalUrl() {
+        return StringUtils.hasText(internalUrl);
     }
 
+    public boolean hasPathToCertificate() {
+        return StringUtils.hasText(pathToCertificate);
+    }
+
+    public boolean hasExternalUrl() {
+        return StringUtils.hasText(externalUrl);
+    }
 }
