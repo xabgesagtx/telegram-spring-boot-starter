@@ -81,7 +81,7 @@ For proxy support you need to set all of the following properties:
 * `telegram.proxy.host`
 * `telegram.proxy.port`
 
-To enable authentication for a proxy your need to set `telegram.proxy.user` and `telegram.proxy.password`.
+To enable authentication for a proxy you need to set `telegram.proxy.user` and `telegram.proxy.password`.
 
 ### General
 
