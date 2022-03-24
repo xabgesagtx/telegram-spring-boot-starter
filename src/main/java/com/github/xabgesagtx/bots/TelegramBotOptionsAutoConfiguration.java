@@ -35,10 +35,7 @@ public class TelegramBotOptionsAutoConfiguration {
         botOptions.setProxyHost(properties.getHost());
         botOptions.setProxyPort(properties.getPort());
         botOptions.setProxyType(properties.getType());
-        if(plainProperties.hasLocalBotUrl())
-        {
-            botOptions.setBaseUrl(plainProperties.getLocalBotUrl());
-        }
+        addLocalBotUrlToOption(botOptions);
         return botOptions;
     }
 
@@ -46,11 +43,16 @@ public class TelegramBotOptionsAutoConfiguration {
     @ConditionalOnMissingBean(DefaultBotOptions.class)
     public DefaultBotOptions localBotApiOptions(){
         DefaultBotOptions botOptions = new DefaultBotOptions();
+        addLocalBotUrlToOption(botOptions);
+        return botOptions;
+    }
+
+    private void addLocalBotUrlToOption(DefaultBotOptions botOptions)
+    {
         if(plainProperties.hasLocalBotUrl())
         {
             botOptions.setBaseUrl(plainProperties.getLocalBotUrl());
         }
-        return botOptions;
     }
 
 
