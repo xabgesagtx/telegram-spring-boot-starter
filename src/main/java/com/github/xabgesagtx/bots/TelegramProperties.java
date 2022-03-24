@@ -14,6 +14,7 @@ class TelegramProperties {
     private String keyStore;
     private String keyStorePassword;
     private String pathToCertificate;
+    private String localBotUrl;
 
     boolean hasKeyStore() {
         return !StringUtils.isEmpty(keyStore) && !StringUtils.isEmpty(keyStorePassword);
@@ -29,5 +30,9 @@ class TelegramProperties {
 
     public boolean hasExternalUrl() {
         return StringUtils.hasText(externalUrl);
+    }
+
+    public boolean hasLocalBotUrl(){
+        return StringUtils.hasText(localBotUrl);
     }
 }
