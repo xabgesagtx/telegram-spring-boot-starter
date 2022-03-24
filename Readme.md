@@ -53,18 +53,19 @@ The bot will then be registered for you automatically on startup.
  
 The following properties can be configured (none are mandatory):
 
-| property | description | available since |
-| -------- | ----------- | --------------- |
-| telegram.external-url | external base url for the webhook | 0.15 |
-| telegram.internal-url | internal base url for the webhook | 0.15 |
-| telegram.key-store | keystore for the server | 0.15 |
-| telegram.key-store-password | keystore password for the server | 0.15 |
-| telegram.path-to-certificate | full path for .pem public certificate keys | 0.15 |
-| telegram.proxy.type | type of proxy (NO_PROXY, HTTP, SOCKS4, SOCKS5) | 0.22 |
-| telegram.proxy.host | host of the proxy | 0.22 |
-| telegram.proxy.port | port of the proxy | 0.22 |
-| telegram.proxy.user | username for proxy authentication | 0.22 |
-| telegram.proxy.password | password for proxy authentication | 0.22 |
+| property                     | description                                    | available since |
+|------------------------------|------------------------------------------------|-----------------|
+| telegram.external-url        | external base url for the webhook              | 0.15            |
+| telegram.internal-url        | internal base url for the webhook              | 0.15            |
+| telegram.key-store           | keystore for the server                        | 0.15            |
+| telegram.key-store-password  | keystore password for the server               | 0.15            |
+| telegram.path-to-certificate | full path for .pem public certificate keys     | 0.15            |
+| telegram.local-bot-url       | base url for local bot api                     | 0.27             |
+| telegram.proxy.type          | type of proxy (NO_PROXY, HTTP, SOCKS4, SOCKS5) | 0.22            |
+| telegram.proxy.host          | host of the proxy                              | 0.22            |
+| telegram.proxy.port          | port of the proxy                              | 0.22            |
+| telegram.proxy.user          | username for proxy authentication              | 0.22            |
+| telegram.proxy.password      | password for proxy authentication              | 0.22            |
 
 ### Webhook support
 

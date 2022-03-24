@@ -13,10 +13,11 @@ import java.net.PasswordAuthentication;
 @Configuration
 @RequiredArgsConstructor
 @ConditionalOnProperty(value = {"host", "port", "type"}, prefix = "telegram.proxy")
-@Import(TelegramProxyProperties.class)
+@Import({TelegramProxyProperties.class, TelegramProperties.class})
 public class TelegramBotOptionsAutoConfiguration {
 
     private final TelegramProxyProperties properties;
+    private final TelegramProperties plainProperties;
 
     @Bean
     public DefaultBotOptions defaultBotOptions() {
@@ -32,6 +33,10 @@ public class TelegramBotOptionsAutoConfiguration {
         botOptions.setProxyHost(properties.getHost());
         botOptions.setProxyPort(properties.getPort());
         botOptions.setProxyType(properties.getType());
+        if(plainProperties.hasLocalBotUrl())
+        {
+            botOptions.setBaseUrl(plainProperties.getLocalBotUrl());
+        }
         return botOptions;
     }
 
