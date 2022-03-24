@@ -32,5 +32,7 @@ class TelegramProperties {
         return StringUtils.hasText(externalUrl);
     }
 
-    public boolean hasLocalBotUrl() { return StringUtils.hasText(localBotUrl);}
+    public boolean hasLocalBotUrl(){
+        return StringUtils.hasText(localBotUrl);
+    }
 }
